@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>¿Qué pilates es para mí? | Test de pilates en Valencia</title>
+<meta name="description" content="Hacé el test y descubrí qué tipo de pilates es ideal para vos: reformer, mat, todas las máquinas o con fisioterapia. 5 preguntas, resultado instantáneo.">
+<link rel="canonical" href="https://www.pilatesmediterraneo.com/pilates-para-ti.html">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="¿Qué pilates es para mí? | Test de pilates en Valencia">
+<meta property="og:description" content="Hacé el test y descubrí qué tipo de pilates es ideal para vos: reformer, mat, todas las máquinas o con fisioterapia. 5 preguntas, resultado instantáneo.">
+<meta property="og:url" content="https://www.pilatesmediterraneo.com/pilates-para-ti.html">
+<meta property="og:locale" content="es_ES">
+<meta property="og:site_name" content="Directorio Pilates Valencia">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+
+<style>
+.quiz-wrap { max-width:620px; margin:0 auto; }
+.quiz-progress-bar {
+  background:var(--color-border,#e5e7eb); border-radius:999px;
+  height:6px; margin-bottom:2rem; overflow:hidden;
+}
+.quiz-progress-fill {
+  background:var(--color-primary,#e85d4a); height:100%;
+  border-radius:999px; transition:width .4s ease; width:0%;
+}
+.quiz-step { animation:qFadeIn .3s ease; }
+.quiz-step[hidden] { display:none; }
+@keyframes qFadeIn { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:none} }
+.quiz-q-num { font-size:.85rem; color:var(--color-muted,#6b7280); font-weight:500; margin-bottom:.5rem; }
+.quiz-question { font-size:1.25rem; font-weight:700; margin:0 0 1.5rem; }
+.quiz-options { display:flex; flex-direction:column; gap:.75rem; }
+.quiz-opt {
+  background:var(--color-surface,#f9fafb);
+  border:2px solid var(--color-border,#e5e7eb);
+  border-radius:.75rem; padding:1rem 1.25rem;
+  font-size:1rem; text-align:left; cursor:pointer;
+  transition:border-color .15s,background .15s;
+}
+.quiz-opt:hover { border-color:var(--color-primary,#e85d4a); background:#fff; }
+.quiz-result[hidden] { display:none; }
+.quiz-result { animation:qFadeIn .4s ease; text-align:center; padding:1rem 0 2rem; }
+.result-emoji { font-size:4rem; margin-bottom:1rem; line-height:1; }
+.result-title { font-size:1.6rem; font-weight:700; margin:0 0 1rem; }
+.result-desc {
+  color:var(--color-muted,#6b7280); margin:0 auto 1rem;
+  max-width:480px; line-height:1.6;
+}
+.result-note {
+  font-size:.9rem; color:var(--color-primary,#e85d4a);
+  background:#fff8f7; border:1px solid #fde0db;
+  border-radius:.5rem; padding:.75rem 1rem;
+  margin:.75rem auto 0; max-width:480px; line-height:1.5;
+}
+.result-note[hidden] { display:none; }
+.result-btns { display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; margin-top:1.5rem; }
+.btn-quiz-primary {
+  background:var(--color-primary,#e85d4a); color:#fff;
+  border:none; border-radius:.75rem; padding:.75rem 1.5rem;
+  font-size:1rem; font-weight:600; text-decoration:none;
+  cursor:pointer; transition:opacity .15s; display:inline-block;
+}
+.btn-quiz-primary:hover { opacity:.9; }
+.btn-quiz-secondary {
+  background:none; border:2px solid var(--color-border,#e5e7eb);
+  border-radius:.75rem; padding:.75rem 1.5rem;
+  font-size:1rem; cursor:pointer; transition:border-color .15s;
+}
+.btn-quiz-secondary:hover { border-color:var(--color-primary,#e85d4a); }
+</style>
+
+
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a href="index.html" class="logo">
+      <span class="logo-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19.5 12.572l-7.5 7.428l-7.5 -7.428a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572"/></svg></span>
+      Pilates Valencia
+    </a>
+    <nav class="main-nav">
+      <a href="index.html">Directorio</a>
+      <a href="tipo/index.html" class="active">Tipos de Pilates</a>
+      <a href="blog/index.html">Blog</a>
+      
+    </nav>
+  </div>
+</header>
+
+
+<section class="hero">
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="index.html">Directorio</a> /
+      <a href="tipo/index.html">Tipos de Pilates</a> / Test
+    </div>
+    <h1>¿Qué pilates es para mí?</h1>
+    <p class="lead">Respondé 5 preguntas y descubrí qué modalidad de pilates se adapta mejor a tus objetivos, condición física y presupuesto.</p>
+  </div>
+</section>
+
+<section class="container" style="margin-top:2rem; margin-bottom:4rem;">
+  <div class="quiz-wrap">
+    <div class="quiz-progress-bar"><div class="quiz-progress-fill" id="qprog"></div></div>
+
+    <div class="quiz-step" id="qs-1">
+      <div class="quiz-q-num">Pregunta 1 de 5</div>
+      <p class="quiz-question">¿Cuál es tu objetivo principal?</p>
+      <div class="quiz-options">
+        <button class="quiz-opt" onclick="ans({fisio:3},1)">Rehabilitación o recuperación de una lesión</button>
+        <button class="quiz-opt" onclick="ans({reformer:2,mixto:2},1)">Tonificar y fortalecer el cuerpo</button>
+        <button class="quiz-opt" onclick="ans({mat:2,reformer:1},1)">Mejorar flexibilidad y bienestar general</button>
+        <button class="quiz-opt" onclick="ans({mat:3},1)">Nunca he hecho pilates y quiero empezar</button>
+      </div>
+    </div>
+
+    <div class="quiz-step" id="qs-2" hidden>
+      <div class="quiz-q-num">Pregunta 2 de 5</div>
+      <p class="quiz-question">¿Tenés alguna lesión o dolor crónico?</p>
+      <div class="quiz-options">
+        <button class="quiz-opt" onclick="ans({fisio:3},2)">Sí, necesito supervisión especializada</button>
+        <button class="quiz-opt" onclick="ans({fisio:1},2)">Tengo alguna molestia leve</button>
+        <button class="quiz-opt" onclick="ans({},2)">No, estoy bien</button>
+      </div>
+    </div>
+
+    <div class="quiz-step" id="qs-3" hidden>
+      <div class="quiz-q-num">Pregunta 3 de 5</div>
+      <p class="quiz-question">¿Qué formato de clase preferís?</p>
+      <div class="quiz-options">
+        <button class="quiz-opt" onclick="ans({reformer:2,mixto:1},3)">Clase individual o semiprivada (máx. 3 personas)</button>
+        <button class="quiz-opt" onclick="ans({mat:3},3)">Clase grupal (hasta 10 personas)</button>
+        <button class="quiz-opt" onclick="ans({},3)">Me da igual</button>
+      </div>
+    </div>
+
+    <div class="quiz-step" id="qs-4" hidden>
+      <div class="quiz-q-num">Pregunta 4 de 5</div>
+      <p class="quiz-question">¿Cuál es tu presupuesto mensual para pilates?</p>
+      <div class="quiz-options">
+        <button class="quiz-opt" onclick="ans({mat:2},4)">Menos de 50€</button>
+        <button class="quiz-opt" onclick="ans({reformer:2},4)">Entre 50€ y 100€</button>
+        <button class="quiz-opt" onclick="ans({mixto:2,fisio:1},4)">Más de 100€</button>
+      </div>
+    </div>
+
+    <div class="quiz-step" id="qs-5" hidden>
+      <div class="quiz-q-num">Pregunta 5 de 5</div>
+      <p class="quiz-question">¿Hablás inglés y preferís clases en ese idioma?</p>
+      <div class="quiz-options">
+        <button class="quiz-opt" onclick="ans({_ingles:1},5)">Sí, me interesan clases en inglés</button>
+        <button class="quiz-opt" onclick="ans({},5)">No, prefiero en español</button>
+      </div>
+    </div>
+
+    <div class="quiz-result" id="quiz-result" hidden>
+      <div class="result-emoji" id="res-emoji"></div>
+      <h2 class="result-title" id="res-title"></h2>
+      <p class="result-desc" id="res-desc"></p>
+      <p class="result-note" id="res-note" hidden></p>
+      <div class="result-btns">
+        <a href="#" id="res-btn" class="btn-quiz-primary">Ver centros →</a>
+        <button onclick="resetQuiz()" class="btn-quiz-secondary">Volver a empezar</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+(function(){
+  var sc = {reformer:0, mixto:0, mat:0, fisio:0};
+  var ingles = false;
+
+  var RESULTS = {
+    fisio:    { emoji:'🩺', title:'Pilates con Fisioterapia',
+                desc:'Tu perfil indica que te beneficiarías de un centro con fisioterapeutas clínicos. Te ofrecerán una valoración inicial, ejercicios adaptados a tu condición y seguimiento profesional.',
+                link:'tipo/con-fisioterapia.html' },
+    mixto:    { emoji:'🏋️', title:'Pilates – Todas las Máquinas',
+                desc:'Buscás una experiencia completa del método. Los estudios con equipamiento completo ofrecen la mayor variedad y progresión, con grupos reducidos y atención personalizada.',
+                link:'tipo/todas-las-maquinas.html' },
+    reformer: { emoji:'⚙️', title:'Pilates Reformer',
+                desc:'El reformer es tu modalidad ideal: trabajo preciso sobre el core, adaptable a tu nivel, grupos pequeños y resultados visibles desde las primeras semanas.',
+                link:'tipo/reformer.html' },
+    mat:      { emoji:'🧘', title:'Pilates Mat / Suelo',
+                desc:'El pilates de suelo es la opción perfecta para vos: accesible, en grupo, con múltiples horarios y el mejor precio para empezar o mantener una práctica regular.',
+                link:'tipo/mat-suelo.html' }
+  };
+
+  window.ans = function(pts, step) {
+    Object.keys(pts).forEach(function(k) {
+      if (k === '_ingles') { ingles = true; return; }
+      sc[k] = (sc[k] || 0) + pts[k];
+    });
+    document.getElementById('qs-' + step).hidden = true;
+    var next = step + 1;
+    if (next <= 5) {
+      document.getElementById('qs-' + next).hidden = false;
+      document.getElementById('qprog').style.width = ((step / 5) * 100) + '%';
+    } else {
+      document.getElementById('qprog').style.width = '100%';
+      showResult();
+    }
+  };
+
+  function showResult() {
+    var priority = ['fisio', 'mixto', 'reformer', 'mat'];
+    var best = priority.reduce(function(a, b) { return sc[a] >= sc[b] ? a : b; });
+    var r = RESULTS[best];
+    document.getElementById('res-emoji').textContent = r.emoji;
+    document.getElementById('res-title').textContent = r.title;
+    document.getElementById('res-desc').textContent = r.desc;
+    document.getElementById('res-btn').href = r.link;
+    if (ingles) {
+      var note = document.getElementById('res-note');
+      note.textContent = '💬 Preferís clases en inglés: podés filtrar por idioma en el directorio completo.';
+      note.hidden = false;
+    }
+    document.getElementById('quiz-result').hidden = false;
+  }
+
+  window.resetQuiz = function() {
+    sc = {reformer:0, mixto:0, mat:0, fisio:0};
+    ingles = false;
+    document.getElementById('qprog').style.width = '0%';
+    document.getElementById('quiz-result').hidden = true;
+    document.getElementById('res-note').hidden = true;
+    for (var i = 1; i <= 5; i++) {
+      document.getElementById('qs-' + i).hidden = (i !== 1);
+    }
+  };
+})();
+</script>
+
+
+<footer class="site-footer">
+  <div class="container">
+    <span>&copy; 2026 Directorio Pilates Valencia &mdash; Guía independiente de estudios de pilates en Valencia y alrededores.</span>
+    <span><a href="index.html">Inicio</a></span>
+  </div>
+</footer>
+</body>
+</html>
