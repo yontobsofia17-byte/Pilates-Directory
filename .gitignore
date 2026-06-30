@@ -1,3 +1,7 @@
+en/en/
+blog/blog/
+tipo/tipo/
+zona/zona/
+.claude/
 __pycache__/
 *.pyc
-.DS_Store
