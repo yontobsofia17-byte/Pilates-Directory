@@ -6,6 +6,8 @@
 <title>{{ title }}</title>
 <meta name="description" content="{{ description }}">
 <link rel="canonical" href="{{ canonical }}">
+<link rel="icon" href="{{ root }}favicon.svg" type="image/svg+xml">
+<meta name="google-site-verification" content="fc6ydyJbQoGQ0_7RmUYJBLDQXZxuoWqJvh71nPQSvoU">
 
 <!-- Open Graph -->
 <meta property="og:type" content="website">
@@ -19,7 +21,22 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="{{ root }}css/style.css">
+<style>
+  .lang-switch {
+    font-size: .75rem;
+    font-weight: 500;
+    padding: .25rem .6rem;
+    border-radius: 999px;
+    border: 1px solid currentColor;
+    opacity: .65;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: opacity .15s;
+  }
+  .lang-switch:hover { opacity: 1; }
+</style>
 
+{% block styles %}{% endblock %}
 {% block jsonld %}{% endblock %}
 </head>
 <body>
@@ -31,7 +48,10 @@
     </a>
     <nav class="main-nav">
       <a href="{{ root }}index.html"{% if active == 'home' %} class="active"{% endif %}>Directorio</a>
-      <a href="{{ root }}index.html#equipamiento"{% if active == 'guia' %} class="active"{% endif %}>Tipos de Pilates</a>
+      <a href="{{ root }}tipo/index.html"{% if active == 'tipo' %} class="active"{% endif %}>Tipos de Pilates</a>
+      <a href="{{ root }}blog/index.html"{% if active == 'blog' %} class="active"{% endif %}>Blog</a>
+      <a href="{{ root }}pilates-para-ti.html"{% if active == 'quiz' %} class="active"{% endif %}>Quiz</a>
+      {% if en_url %}<a href="{{ en_url }}" class="lang-switch">🇬🇧 English</a>{% endif %}
     </nav>
   </div>
 </header>

@@ -13,14 +13,25 @@
   ]
 }
 </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {% for f in index_faqs %}
+    {"@type": "Question", "name": {{ f.q|tojson }}, "acceptedAnswer": {"@type": "Answer", "text": {{ f.a|tojson }}}}{% if not loop.last %},{% endif %}
+    {% endfor %}
+  ]
+}
+</script>
 {% endblock %}
 
 {% block content %}
 <section class="hero">
   <div class="container">
     <span class="eyebrow">{{ icons['map-pin'] }} {{ studios|length }} estudios en Valencia y alrededores</span>
-    <h1>Encuentra tu estudio de pilates ideal en Valencia</h1>
-    <p class="lead">Directorio independiente con equipamiento, precios, fisioterapia, niveles, idiomas y horarios de los estudios de pilates de Valencia ciudad, Paterna, Torrent, L'Eliana y Aldaia.</p>
+    <h1>Clases de pilates en Valencia: compara 38 estudios con precios y horarios</h1>
+    <p class="lead">Compara clases de pilates en Valencia por tipo, precio, barrio y horario. 38 estudios con ficha completa: reformer, mat, suelo, clínico y más. Valencia ciudad, Paterna, Torrent, L'Eliana y Aldaia.</p>
 
     <div class="search-bar">
       <input type="text" id="f-search" placeholder="Buscar por nombre o zona...">
@@ -46,6 +57,15 @@
         <option value="si">Sí ofrecen inglés</option>
       </select>
     </div>
+  </div>
+</section>
+
+<section class="container barrio-nav">
+  <p class="barrio-nav-label">Pilates por barrio en Valencia ciudad</p>
+  <div class="barrio-chips">
+    {% for b in barrio_links %}
+    <a href="zona/{{ b.slug }}.html" class="barrio-chip">{{ b.nombre }}</a>
+    {% endfor %}
   </div>
 </section>
 
@@ -88,6 +108,16 @@
   <div class="empty-state" id="empty-state" style="display:none;">
     No hay estudios que coincidan con tu búsqueda. Prueba a cambiar los filtros.
   </div>
+</section>
+
+<section class="container faq-section">
+  <h2>Preguntas frecuentes sobre pilates en Valencia</h2>
+  {% for f in index_faqs %}
+  <div class="faq-item">
+    <h3>{{ f.q }}</h3>
+    <p>{{ f.a }}</p>
+  </div>
+  {% endfor %}
 </section>
 
 <script>
